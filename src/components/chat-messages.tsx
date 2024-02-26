@@ -8,7 +8,7 @@ import { ChatMessage, ChatMessageProps } from "@/components/chat-message";
 interface ChatMessagesProps {
   messages: ChatMessageProps[];
   isLoading: boolean;
-  companion: Companion
+  companion: Companion;
 }
 
 export const ChatMessages = ({
@@ -27,7 +27,7 @@ export const ChatMessages = ({
 
     return () => {
       clearTimeout(timeout);
-    }
+    };
   }, []);
 
   useEffect(() => {
@@ -42,9 +42,9 @@ export const ChatMessages = ({
         role="system"
         content={`Hello, I am ${companion.name}, ${companion.description}`}
       />
-      {messages.map((message) => (
+      {messages.map((message, index) => (
         <ChatMessage
-          key={message.content}
+          key={`${message.content} - ${index}`}
           src={companion.src}
           content={message.content}
           role={message.role}
